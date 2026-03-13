@@ -11,13 +11,13 @@ test("normalizeString removes diacritics", () => {
 	assert.strictEqual(normalizeString("Château de Vincennes"), "chateau de vincennes");
 });
 
-test("normalizeString handles dashes (current behavior: only first hyphen)", () => {
+test("normalizeString handles dashes", () => {
 	// En-dash to hyphen, then " - " to "-", then "-" to " "
 	assert.strictEqual(normalizeString("Villejuif – Gustave Roussy"), "villejuif gustave roussy");
 	// Normal hyphen to space
 	assert.strictEqual(normalizeString("Saint-Lazare"), "saint lazare");
-    assert.strictEqual(normalizeString("Bécon-les-Bruyères"), "becon les-bruyeres");
-    assert.strictEqual(normalizeString("Saint-Germain-en-Laye"), "saint germain-en-laye");
+    assert.strictEqual(normalizeString("Bécon-les-Bruyères"), "becon les bruyeres");
+    assert.strictEqual(normalizeString("Saint-Germain-en-Laye"), "saint germain en laye");
 });
 
 test("normalizeString handles apostrophes", () => {
@@ -27,6 +27,6 @@ test("normalizeString handles apostrophes", () => {
 test("normalizeString handles mixed cases", () => {
     assert.strictEqual(
         normalizeString("L'Haÿ-les-Roses"),
-        "l’hay les-roses"
+        "l’hay les roses"
     );
 });

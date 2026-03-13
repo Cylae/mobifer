@@ -21,5 +21,6 @@ This GitHub repository hosts the source code for the website https://mobifer.git
 ----
 **Maintenance**
 - Cleanup: Removed debug console logs in PANAM display script.
+- Bugfix/Optimization: Fixed string normalization to replace all occurrences of dashes, apostrophes, and other characters by using `replaceAll` instead of `replace`.
 
 **Rejoignez le [serveur Discord du projet](https://discord.gg/zWraJq5eE5), et contribuez dès maintenant avec [MobiStation](https://github.com/Mobifer/mobistation) !**
