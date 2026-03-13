@@ -8,6 +8,11 @@ import { genererLignesHTML } from "./genlineicons.js";
 // Exécution du script au chargement de la page
 const textArea = document.getElementById("code");
 
+const stationsPromise = fetch('/data/stations.json').then(response => response.json());
+const metrolistePromise = fetch('/data/metroliste.json').then(response => response.json());
+const stationsPositionsPromise = fetch('/data/stationsPositions.geojson').then(response => response.json());
+const accesPromise = fetch('/data/acces.geojson').then(response => response.json());
+
 textArea.addEventListener("input", function () {
 	// Prise en compte des arguments dans le lien
 	// ?station=X
@@ -15,13 +20,8 @@ textArea.addEventListener("input", function () {
 	const stationInput = JSON.parse(this.value);
     const station = Object.values(stationInput)[0];
 
-	async function getStations() {
-		const response = await fetch('/data/stations.json');
-		return await response.json();
-	};
-
 	// Sinon, on charge la station
-	getStations().then(data => {
+	stationsPromise.then(data => {
 		document.title = `${station.nom} - MobiFer`;
 
 		let lignesHTML = genererLignesHTML(station.lignes);
@@ -303,8 +303,7 @@ textArea.addEventListener("input", function () {
 		let prochainsArrets = {};
 		let destinations = {};
 
-		fetch('/data/metroliste.json')
-			.then(response => response.json())
+		metrolistePromise
 			.then(data => {
 				const container = document.getElementById("prochains-arrets");
 				let containerHTML = ``;
@@ -432,8 +431,7 @@ textArea.addEventListener("input", function () {
 		let stationsMarkers = new L.FeatureGroup();
 		let allStationFeatures = [];
 
-		fetch('/data/stationsPositions.geojson')
-			.then(response => response.json())
+		stationsPositionsPromise
 			.then(data => {
 				allStationFeatures = data.features;
 
@@ -453,8 +451,7 @@ textArea.addEventListener("input", function () {
 		let accesMarkers = new L.FeatureGroup();
 		let allFeatures = [];
 
-		fetch('/data/acces.geojson')
-			.then(response => response.json())
+		accesPromise
 			.then(data => {
 				allFeatures = data.features;
 				updateVisiblePoints(); // Affiche les premiers points visibles
