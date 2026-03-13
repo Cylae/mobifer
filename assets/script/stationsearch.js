@@ -1,8 +1,5 @@
 import { genererLignesHTML } from "./genlineicons.js";
-
-function normalizeString(str) {
-	return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace("–", "-").replace(" - ", "-").replace("-", " ").replace("'", "’");
-}
+import { normalizeString } from "./utils.js";
 
 const searchInput = document.getElementById("search");
 const resultsList = document.getElementById("search-results");
