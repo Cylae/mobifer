@@ -18,4 +18,8 @@ This GitHub repository hosts the source code for the website https://mobifer.git
 
 - Stations : 332
 
+----
+**Maintenance**
+- Cleanup: Removed debug console logs in PANAM display script.
+
 **Rejoignez le [serveur Discord du projet](https://discord.gg/zWraJq5eE5), et contribuez dès maintenant avec [MobiStation](https://github.com/Mobifer/mobistation) !**
