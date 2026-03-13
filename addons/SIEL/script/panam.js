@@ -179,8 +179,6 @@ function handlePassages() {
 	const stop = params.get("stop");
 
 	requestTime(stop).then(passages => {
-		console.log(passages);
-
 		const ecran = document.getElementById("ecran");
 		let hasPartiel = false;
 
@@ -242,7 +240,6 @@ function handlePassages() {
 				let minutes = depart ? Math.max(Math.ceil((Date.parse(depart) - Date.now())/1000/60), 0) : -1;
 				if (i === 1 && minutes === 0) minutes = 1;
 				prochains[i] = minutes;
-				console.log(minutes);
 
 				let rectangleDiv = document.querySelector(`.rectangle${i+1}`);
 				let tempsDiv = document.querySelector(`.temps-partiel${i+1}`);
@@ -331,7 +328,6 @@ function handlePassages() {
 			let minutes = depart ? Math.max(Math.ceil((Date.parse(depart) - Date.now())/1000/60), 0) : -1;
 			if (i === 1 && minutes === 0) minutes = 1;
 			prochains[i] = minutes;
-			console.log(minutes);
 			if (i === 0 || i === 1 || i === 2) {
 				let passageDiv = document.querySelector(`.passage${i+1}`);
 				let hasChanged = false;
